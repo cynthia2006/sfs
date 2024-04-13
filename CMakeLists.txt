@@ -39,6 +39,7 @@ if(USE_SYSTEM_GRPC)
   endif()
 else()
   include(FetchContent)
+  set(ABSL_ENABLE_INSTALL ON)
   FetchContent_Declare(
     gRPC
     GIT_REPOSITORY https://github.com/grpc/grpc
