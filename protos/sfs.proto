@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package sfs;
+
+enum EntKind {
+  /* Those entries which are not supported */
+  ENT_KIND_UNKNOWN = 0;
+  ENT_KIND_FILE = 1;
+  ENT_KIND_DIRECTORY = 2;
+}
+
+message DirEnt {
+  EntKind type = 1;
+  string path = 2;
+}
+
+message ListDirReq {
+  string path = 1;
+}
+
+service Sfs {
+  // Flat listing of directory entries
+  rpc ListDir(ListDirReq) returns (stream DirEnt);
+}
